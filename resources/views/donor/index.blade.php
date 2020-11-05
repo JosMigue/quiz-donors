@@ -7,7 +7,7 @@
       @if (session('successMessage'))
         <x-alert class="bg-green-400" iconClass="fa fa-check">
           <x-slot name="boldMessage">
-            {{__('Done!')}}
+            {{__('Done.')}}
           </x-slot>
           <x-slot name="message">
             {{session('successMessage')}}

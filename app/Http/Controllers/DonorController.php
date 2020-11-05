@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\SaveDonorRequest;
+use App\Http\Requests\UpdateDonorRequest;
 use Illuminate\Http\Request;
 use App\Models\Donor;
 
@@ -38,16 +39,24 @@ class DonorController extends Controller
 
   public function edit(Donor $donor)
   {
-    //
+    return view('donor.edit', compact('donor'));
   }
 
-  public function update(Request $request, Donor $donor)
+  public function update(UpdateDonorRequest $request, Donor $donor)
   {
-    //
+    if($donor->update($request->validated())){
+      return redirect()->route('donors.index')->with('successMessage', __('Donor has been updated succesfully'));
+    }else{
+      return redirect()->route('donors.index')->with('errorMessage', __('Something went wrong, try again later'));
+    }
   }
 
   public function destroy(Donor $donor)
   {
-    //
+    if($donor->delete()){
+      return redirect()->route('donors.index')->with('successMessage', __('Donor has been deleted successfully'));
+    }else{
+      return redirect()->route('donors.index')->with('errorMessage', __('Something went wrong, try again later'));
+    }
   }
 }
