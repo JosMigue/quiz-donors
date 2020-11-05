@@ -11,10 +11,10 @@ class State extends Model
     public $timestamps = false;
   
     public function cities(){
-        return $this->hasMany('App\City');
+        return $this->hasMany(City::class);
     }
   
     public function donors(){
-        return $this->belongsToMany('App\Donor');
+        return $this->belongsToMany(Donor::class);
     } 
 }

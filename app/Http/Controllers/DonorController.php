@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\SaveDonorRequest;
 use Illuminate\Http\Request;
+use App\Models\Donor;
 
 class DonorController extends Controller
 {
@@ -18,12 +19,16 @@ class DonorController extends Controller
 
   public function create()
   {
-    //
+    return view('donor.create');
   }
 
-  public function store(Request $request)
+  public function store(SaveDonorRequest $request)
   {
-    //
+    if(Donor::create($request->validated())){
+      return redirect()->route('donors.index')->with('successMessage', __('Donor has been added succesfully'));
+    }else{
+      return redirect()->route('donors.index')->with('errorMessage', __('Someting went wrong, try again later'));
+    }
   }
 
   public function show(Donor $donor)

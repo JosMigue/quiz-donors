@@ -10,6 +10,6 @@ class City extends Model
     public $timestamps = false;
   
     public function state(){
-      return $this->hasOne('App\State');
+      return $this->hasOne(State::class);
     }
 }

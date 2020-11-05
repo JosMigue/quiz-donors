@@ -16,7 +16,10 @@ class DonorsTable extends Component
 
     public function render()
     {
-        $donors = Donor::paginate(15);
-        return view('livewire.donors-table', compact('donors'));
+        $bloodTypes = Donor::getEnum('bloodtype');
+        $genderTypes = Donor::getEnum('gendertype');
+        $donorTypes = Donor::getEnum('donortype');
+        $donors = Donor::with('city', 'state')->paginate(15);
+        return view('livewire.donors-table', compact('donors','bloodTypes', 'genderTypes', 'donorTypes'));
     }
 }
