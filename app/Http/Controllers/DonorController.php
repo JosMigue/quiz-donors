@@ -2,84 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Donor;
 use Illuminate\Http\Request;
 
 class DonorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function __construct(){
+    $this->middleware('auth');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function index()
+  {
+    return view('donor.index');
+  }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Donor  $donor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Donor $donor)
-    {
-        //
-    }
+  public function create()
+  {
+    //
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Donor  $donor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Donor $donor)
-    {
-        //
-    }
+  public function store(Request $request)
+  {
+    //
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Donor  $donor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Donor $donor)
-    {
-        //
-    }
+  public function show(Donor $donor)
+  {
+    //
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Donor  $donor
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Donor $donor)
-    {
-        //
-    }
+  public function edit(Donor $donor)
+  {
+    //
+  }
+
+  public function update(Request $request, Donor $donor)
+  {
+    //
+  }
+
+  public function destroy(Donor $donor)
+  {
+    //
+  }
 }
