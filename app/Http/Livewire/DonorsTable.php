@@ -19,7 +19,7 @@ class DonorsTable extends Component
         $bloodTypes = Donor::getEnum('bloodtype');
         $genderTypes = Donor::getEnum('gendertype');
         $donorTypes = Donor::getEnum('donortype');
-        $donors = Donor::with('city', 'state')->paginate(15);
+        $donors = Donor::where('name','LIKE', '%'.$this->search.'%')->with('city', 'state')->paginate(1);
         return view('livewire.donors-table', compact('donors','bloodTypes', 'genderTypes', 'donorTypes'));
     }
 }
