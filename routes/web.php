@@ -22,3 +22,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('donors','DonorController')->except('create');
+
+Route::get('/blood_donation','quizController@show');
+
+Route::get('/donor/register', 'DonorController@create')->name('donors.register');

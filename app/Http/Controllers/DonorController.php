@@ -10,7 +10,7 @@ class DonorController extends Controller
 {
 
   public function __construct(){
-    $this->middleware('auth');
+    $this->middleware('auth')->except(['create', 'store']);
   }
 
   public function index()
@@ -18,17 +18,16 @@ class DonorController extends Controller
     return view('donor.index');
   }
 
-  public function create()
-  {
+  public function create(){
     return view('donor.create');
   }
 
   public function store(SaveDonorRequest $request)
   {
     if(Donor::create($request->validated())){
-      return redirect()->route('donors.index')->with('successMessage', __('Donor has been added succesfully'));
+      return redirect()->route('/blood_donation')->with('successMessage', __('Donor has been added succesfully'));
     }else{
-      return redirect()->route('donors.index')->with('errorMessage', __('Someting went wrong, try again later'));
+      return redirect()->route('/blood_donation')->with('errorMessage', __('Someting went wrong, try again later'));
     }
   }
 
