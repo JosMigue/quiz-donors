@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaveDonorRequest;
 use App\Http\Requests\UpdateDonorRequest;
 use Illuminate\Http\Request;
+use App\Notifications\NewDonorNotification;
 use App\Models\Donor;
+use App\Models\User;
 
 class DonorController extends Controller
 {
@@ -24,10 +26,13 @@ class DonorController extends Controller
 
   public function store(SaveDonorRequest $request)
   {
-    if(Donor::create($request->validated())){
-      return redirect()->route('/blood_donation')->with('successMessage', __('Donor has been added succesfully'));
+    $donor = Donor::create($request->validated());
+    if($donor){
+      $notifiableUser = User::where('email', 'pato500001@gmail.com')->first();
+      $notifiableUser->notify(new NewDonorNotification($donor));
+      return redirect()->route('blood.donation')->with('successMessage', __('Donor has been added succesfully'));
     }else{
-      return redirect()->route('/blood_donation')->with('errorMessage', __('Someting went wrong, try again later'));
+      return redirect()->route('blood.donation')->with('errorMessage', __('Someting went wrong, try again later'));
     }
   }
 
