@@ -5,7 +5,7 @@
     <x-slot name="slot">
       <div class="mt-5 lg:container lg:mx-auto">
         <x-jet-validation-errors></x-jet-validation-errors>
-        <livewire:create-donor-form :donor="$donor"></livewire:create-donor-form>
+        <livewire:update-donor-form :donor="$donor"></livewire:update-donor-form>
       </div>
     </x-slot>
   </x-app-layout>
