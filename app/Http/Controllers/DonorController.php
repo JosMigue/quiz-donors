@@ -33,7 +33,10 @@ class DonorController extends Controller
 
   public function show(Donor $donor)
   {
-    //
+    $bloodTypes = Donor::getEnum('bloodtype');
+    $genderTypes = Donor::getEnum('gendertype');
+    $donorTypes = Donor::getEnum('donortype');
+    return view('donor.show', compact('donor','bloodTypes', 'genderTypes', 'donorTypes'));
   }
 
   public function edit(Donor $donor)
