@@ -14,12 +14,24 @@ class DonorsTable extends Component
 
     public $search = '';
 
+    public $searchResults = [];
+
+    public function mount(){
+        if($this->search){
+            $this->searchDonor();
+        }
+    }
+
     public function render()
     {
         $bloodTypes = Donor::getEnum('bloodtype');
         $genderTypes = Donor::getEnum('gendertype');
         $donorTypes = Donor::getEnum('donortype');
-        $donors = Donor::where('name','LIKE', '%'.$this->search.'%')->with('city', 'state')->paginate(15);
+        $donors = Donor::with('city', 'state')->paginate(15);
         return view('livewire.donors-table', compact('donors','bloodTypes', 'genderTypes', 'donorTypes'));
+    }
+
+    public function searchDonor(){
+        $this->searchResults = Donor::where('name','LIKE', '%'.$this->search.'%')->get();
     }
 }
