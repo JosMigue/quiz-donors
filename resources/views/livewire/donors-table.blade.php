@@ -120,7 +120,8 @@
                       <td class="px-2 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                         <div class="flex justify-center ml-6 z-10">
                           @if ($donor->role!=1)
-                            <a href="{{route('donors.edit', $donor->id)}}" class="mx-1 py-2 px-3 rounded bg-yellow-300 text-white hover:text-indigo-900"><i class="fa fa-pencil"></i></a>
+                            <a href="{{route('donors.edit', $donor->id)}}" class="mx-1 py-2 px-3 rounded bg-yellow-300 text-white hover:text-yellow-900"><i class="fa fa-pencil"></i></a>
+                            <a href="{{route('donors.show', $donor->id)}}" class="mx-1 py-2 px-3 rounded bg-blue-500 text-white hover:text-blue-900"><i class="fa fa-eye"></i></a>
                             <form method="POST" action="{{route('donors.destroy',$donor->id)}}">
                               @csrf 
                               @method('DELETE')

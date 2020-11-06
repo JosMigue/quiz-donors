@@ -28,7 +28,7 @@ class DonorController extends Controller
   {
     $donor = Donor::create($request->validated());
     if($donor){
-      $notifiableUser = User::where('email', 'pato500001@gmail.com')->first();
+      $notifiableUser = User::where('id', '1')->first();
       $notifiableUser->notify(new NewDonorNotification($donor));
       return redirect()->route('blood.donation')->with('successMessage', __('Donor has been added succesfully'));
     }else{

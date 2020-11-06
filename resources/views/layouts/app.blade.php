@@ -40,5 +40,6 @@
         @stack('modals')
 
         @livewireScripts
+        <script src="{{asset('js/closeAlert.js')}}" defer></script>
     </body>
 </html>
