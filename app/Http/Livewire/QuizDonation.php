@@ -19,19 +19,6 @@ class QuizDonation extends Component
       ['question' => '¿Tienes síntomas como tos o dolor de garganta?', 'response' => false, 'badResponse' => 'Necesitas esperar a que pasen tus síntomas para poder donar'],
       ['question' => '¿Has tomado medicamentos en los últimos 5 días?', 'response' => false, 'badResponse' => 'Consulta con tu médico si puedes donar sangre'],
     ];
-    public $answers = [ 
-      ['question' => '¿Tienes más de 18 años?', 'response' => true],
-      ['question' => '¿Estás embarazada o lactando?', 'response' => false],
-      ['question' => '¿Traes contigo una identificación oficial con fotografía?', 'response' => true],
-      ['question' => '¿Pesas más de 50 kilos?', 'response' => true],
-      ['question' => '¿Has padecido de ataques epilépticos, convulsiones o enfermedades del corazón?', 'response' => false],
-      ['question' => '¿Te has sometido a una operación en los últimos meses?', 'response' => false],
-      ['question' => '¿Te has tatuado o hecho piercings en los últimos 12 meses?', 'response' => false],
-      ['question' => '¿Te has vacunado en los últimos 30 días?', 'response' => false],
-      ['question' => '¿Padeciste hepatitis después de los 10 años?', 'response' => false],
-      ['question' => '¿Tienes síntomas como tos o dolor de garganta?', 'response' => false ],
-      ['question' => '¿Has tomado medicamentos en los últimos 5 días?', 'response' => false]
-    ];
     public $counter = 0;
     public $isWrongAnswer = false;
     public $isAbleToDonate = false;

@@ -1,8 +1,46 @@
 <div>
   <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
-    <input class="form-input rounded shadow-sm mt-1 block w-full" type="text" wire:model="search" placeholder="{{__('Search donor..')}}">
+    <div class="grid grid-cols-1">
+      <div class="flex justify-center">
+        <input class="form-input rounded shadow-sm mt-1 lg:w-1/2 w-full" type="text" wire:model="search" wire:keydown="searchDonor()" placeholder="{{__('Search donor...')}}">
+      </div>
+      <div class="flex justify-center">
+        <div class="absolute bg-white lg:w-1/2 w-full lg:px-20 px-4 px-0">
+          @if ($search != '')
+            @if ($searchResults->count()>0)
+              <div class="bg-white py-2 px-5 border rounded">
+                resultados:
+              </div>
+              @foreach ($searchResults as $searchResult)
+                <a href="{{route('donors.show', $searchResult->id)}}">
+                  <div class="bg-white py-2 px-5 border rounded hover:bg-blue-200 hover:text-white text-lg cursor-pointer">
+                    <div class="flex items-center">
+                      <div class="flex-shrink-0 h-10 w-10">
+                        <img class="h-10 w-10 rounded-full bg-indigo-100" src="https://ui-avatars.com/api/?name=.{{$searchResult->name}}" alt="{{$searchResult->name}}">
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm leading-5 font-medium text-gray-900">
+                          {{$searchResult->name}} {{$searchResult->parental_surname}} {{$searchResult->maternal_surname}}
+                        </div>
+                        <div class="text-sm leading-5 text-gray-500">
+                          {{$searchResult->email}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              @endforeach
+            @else
+            <div class="bg-white py-2 px-5 border rounded">
+              No hay resultado para la búsqueda "{{$search}}"
+            </div>
+            @endif
+          @endif
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+  <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6 z-30">
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
