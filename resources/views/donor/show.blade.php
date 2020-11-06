@@ -69,6 +69,21 @@
             {{$donor->mobile}}
           </div>
         </div>
+        <div class="flex flex-row justify-center">
+          <h5 class="font-semibold text-xl text-gray-800 leading-tight">Respuestas</h5>
+        </div>
+        <div class="grid lg:grid-cols-3 grid-cols-1 gap-6 mt-4">
+          @foreach ($answers as $answer)
+            <div>
+              {{$answer['question']}} <br>
+              @if ($answer['response'] == 1)
+                Sí
+              @else
+                No
+              @endif
+            </div>
+          @endforeach
+        </div>
       </div>
     </div>
   </x-slot>
